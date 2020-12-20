@@ -15,6 +15,8 @@ class LinkedList:
 
     def append_val(self, x):
         '''add x to the end of the list'''
+        if not isinstance(x, Node):
+            x = Node(x)
         if self.head == None:
             self.head = x
         else:
@@ -33,11 +35,21 @@ class LinkedList:
 
     def add_to_start(self, x):
         '''add x to the left of the list making it the head'''
-        pass
+        if not isinstance(x, Node):
+            x = Node(x)
+        x.next = self.head
+        self.head = x
 
     def search_val(self, x):
         '''return indices where x was found'''
-        pass
+        count = 0
+        curr = self.head
+        while curr != None:
+            if curr.data == x:
+                return count
+            curr = curr.next
+            count += 1
+        return 'Node not found'
 
     def remove_val_by_index(self, x):
         '''remove and return value at index x provided as parameter'''
@@ -56,6 +68,7 @@ node2 = Node(2)
 node3 = Node(3)
 node4 = Node(4)
 node5 = Node(5)
+node6 = Node(6)
 
 myList = LinkedList()
 
@@ -63,6 +76,9 @@ myList.append_val(node1)
 myList.append_val(node2)
 myList.append_val(node3)
 myList.append_val(node4)
-myList.append_val(node5)
+myList.append_val(5)
+myList.add_to_start(node6)
 
 print(myList)
+
+print(myList.search_val(5))
