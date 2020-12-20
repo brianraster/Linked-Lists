@@ -61,24 +61,27 @@ class LinkedList:
 
     def reverse_list_recur(self, current, previous):
         '''reverse the sequence of node pointers in the linked list'''
-        pass
-
-node1 = Node(1)
-node2 = Node(2)
-node3 = Node(3)
-node4 = Node(4)
-node5 = Node(5)
-node6 = Node(6)
+        if self.head == None:
+            return
+        elif current.next == None:
+            self.tail = self.head
+            current.next = previous
+            self.head = current
+        else:
+            next = current.next
+            current.next = previous
+            self.reverse_list_recur(next, current)
 
 myList = LinkedList()
 
-myList.append_val(node1)
-myList.append_val(node2)
-myList.append_val(node3)
-myList.append_val(node4)
+myList.append_val(1)
+myList.append_val(2)
+myList.append_val(3)
+myList.append_val(4)
 myList.append_val(5)
-myList.add_to_start(node6)
 
 print(myList)
 
-print(myList.search_val(5))
+myList.reverse_list_recur(myList.head, None)
+
+print(myList)
