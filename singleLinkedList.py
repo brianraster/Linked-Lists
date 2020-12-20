@@ -57,7 +57,14 @@ class LinkedList:
 
     def length(self):
         '''return the length of the list, rep'd by number of nodes'''
-        pass
+        curr = self.head
+        count = 1
+        if curr == None:
+            return 'Cannot give length of empty linked list'
+        while curr.next != None:
+            count += 1
+            curr = curr.next
+        return count
 
     def reverse_list_recur(self, current, previous):
         '''reverse the sequence of node pointers in the linked list'''
@@ -79,9 +86,11 @@ myList.append_val(2)
 myList.append_val(3)
 myList.append_val(4)
 myList.append_val(5)
+myList.append_val(6)
 
 print(myList)
 
-myList.reverse_list_recur(myList.head, None)
+# myList.reverse_list_recur(myList.head, None)
 
-print(myList)
+# print(myList)
+print(myList.length())
