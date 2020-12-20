@@ -28,7 +28,7 @@ class LinkedList:
             toPrint += str(curr.data) + '->'
             curr = curr.next
         if toPrint:
-            return '[' + toPrint + ']'
+            return '[' + toPrint[:-2] + ']'
         return '[]'
 
     def add_to_start(self, x):
